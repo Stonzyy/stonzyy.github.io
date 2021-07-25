@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Control panel</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+</head>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+ 
+<body>
+
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link href="/web/carbon-components/css/carbon-components.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+      <style type="text/css">
+.open-button {
+  background-color:white;
+  color: black;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+  border-bottom:2px solid black;
+  border-top:2px solid black;
+  
+  box-shadow: 3px 4px lightgrey;
+}
+
+
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      background: #f7f7f7;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .Chat__header {
+      text-align: center;
+      padding-top: 32px;
+      width: 100%;
+    }
+
+    .Chat__header h1, .Chat__header h1 a {
+      font-size: 1.2rem;
+    }
+
+    .Chat__holder,
+    .Chat__body {
+      border-radius: 0.5em;
+    }
+
+    .Chat__holder {
+      background: #f7f7f7;
+      height: 540px;
+      margin: 32px auto 0 auto;
+      width: 320px;
+    }
+
+    .Chat__title {
+      background: red;
+    }
+
+    .Chat__body {
+      height: 540px;
+      width: 320px;
+      max-height: calc(100vh - 140px);
+    }
+
+    .Chat__body--loading {
+      text-align: center;
+    }
+
+    .Chat__body--loading .bx--loading {
+      margin: auto;
+    }
+
+    .Chat__404 {
+      text-align: center;
+    }
+
+    .Chat__loading {
+      margin: auto;
+      text-align: center;
+      width: 64px;
+    }
+
+    .link-icon {
+      fill: red;
+    }
+
+    /**
+     * We're picking up font-faces from carbon but those appear out-of-date and the semibold versions contained within
+     * appear to have some defects in them. See https://github.ibm.com/watson-engagement-advisor/wea-backlog/issues/26907.
+     * The definitions below are copied from an upcoming version of carbon and can be removed once it's available.
+     */
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 600;
+      src: local('IBM Plex Sans SemiBold'), local('IBMPlexSans-SemiBold'),
+      url(https://fonts.gstatic.com/s/ibmplexsans/v6/zYX9KVElMYYaJe8bpLHnCwDKjQ76AIxsdP3pBmtF8A.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+      U+FE2E-FE2F;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 600;
+      src: local('IBM Plex Sans SemiBold'), local('IBMPlexSans-SemiBold'),
+      url(https://fonts.gstatic.com/s/ibmplexsans/v6/zYX9KVElMYYaJe8bpLHnCwDKjQ76AIVsdP3pBmtF8A.woff2) format('woff2');
+      unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 600;
+      src: local('IBM Plex Sans SemiBold'), local('IBMPlexSans-SemiBold'),
+      url(https://fonts.gstatic.com/s/ibmplexsans/v6/zYX9KVElMYYaJe8bpLHnCwDKjQ76AIJsdP3pBmtF8A.woff2) format('woff2');
+      unicode-range: U+0370-03FF;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 600;
+      src: local('IBM Plex Sans SemiBold'), local('IBMPlexSans-SemiBold'),
+      url(https://fonts.gstatic.com/s/ibmplexsans/v6/zYX9KVElMYYaJe8bpLHnCwDKjQ76AI5sdP3pBmtF8A.woff2) format('woff2');
+      unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 600;
+      src: local('IBM Plex Sans SemiBold'), local('IBMPlexSans-SemiBold'),
+      url(https://fonts.gstatic.com/s/ibmplexsans/v6/zYX9KVElMYYaJe8bpLHnCwDKjQ76AI9sdP3pBmtF8A.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      font-style: normal;
+      font-weight: 600;
+      src: local('IBM Plex Sans SemiBold'), local('IBMPlexSans-SemiBold'),
+      url(https://fonts.gstatic.com/s/ibmplexsans/v6/zYX9KVElMYYaJe8bpLHnCwDKjQ76AIFsdA.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
+      U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+  </style>
+
+<ul class="ti">
+<h1 style="text-align: center;">ARM Control Panel</h1> 
+</ul>
+<form action="acc_panel.php" method="post">
+
+<ul class="arm">
+<div class="w3-container">
+
+
+  <h3>Turn on and off</h3>
+<p>
+  <button class="w3-btn w3-ripple w3-blue" style="margin-left: 20px;" onclick="message();" name="on">On</button>
+  <button class="w3-btn w3-ripple w3-blue"style="margin-left: 20px;" onclick="message();" name="off">Off</button>
+
+</p>
+</div>
+
+<br><br> 
+
+  <label for="range1">Arm 1</label>
+  <input id="range1" name="range1" type="range" min="0" max="90" value="50">
+  <label for="range2">Arm2</label>
+  <input id="range2" name="range2" type="range" min="0" max="90" value="50">
+  <label for="range3">Arm3</label>
+  <input id="range3" name="range3" type="range" min="0" max="90" value="50">
+  <label for="range4">Arm 4</label>
+  <input id="range4" name="range4" type="range" min="0" max="90" value="50">
+  <label for="range5">Arm5</label>
+  <input id="range5" name="range5" type="range" min="0" max="90" value="50">
+  <label for="range6">Arm6</label>
+  <input id="range6" name="range6" type="range" min="0" max="90" value="50">
+  <br><br>
+
+  <div class="w3-container">
+
+
+<p>
+  <button class="w3-btn w3-ripple w3-blue" style=" margin-left: 50px;" onclick="send();" name="Send">Send</button>
+
+</p>
+</ul>
+
+
+
+</div>
+
+</form>
+
+ <script src="script.js"></script> 
+ <script>
+
+function message() {
+  alert("done");
+}
+function send(){
+  alert("values updated successfully")
+}
+
+ </script>
+
+
+    
+  <button onclick="show()" class="open-button" >
+      Start Chat ?
+  </button>
+
+   <button onclick="hide()" >
+        &nbsp; &nbsp; hide
+    </button> 
+
+
+
+    <script>
+var modal = document.getElementsByClassName("WatsonAssistantChatHost")[0];
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+    
+    </script>
+    
+  <script>
+
+
+
+
+  function hide()
+  {
+    var chatwindow = document.getElementsByClassName("WatsonAssistantChatHost")[0];
+    chatwindow.style.display="none"
+
+
+  
+  }
+
+  function show()
+  {
+    var chatwindow = document.getElementsByClassName("WatsonAssistantChatHost")[0];
+    chatwindow.style.display="block"
+  }
+
+  </script>
+
+
+  
+
+    
+    
+    <script src="https://assistant-web.watsonplatform.net/loadWatsonAssistantChat.js"></script>
+    <script>
+      var hostElement = document.querySelector('.Chat__body');
+      var loadingElement = document.querySelector('.bx--loading');
+      window.loadWatsonAssistantChat({
+        debug: true,
+        element: hostElement,
+        integrationID: '#',
+        showLauncher: false,
+        openChatByDefault: true,
+        region: 'eu-gb',
+        __ibm__: {
+          cdnEndpoint: 'https://assistant-web.watsonplatform.net',
+          postURL: 'https://assistant-chat-eu-gb.watsonplatform.net/public/message/',
+          isPreviewLink: true,
+          history: ''
+        }
+      }).then(function (instance) {
+        window.instance = instance;
+        instance.render().then(function () {
+          loadingElement.parentNode.removeChild(loadingElement);
+          hostElement.classList.remove('Chat__body--loading');
+          hostElement.classList.add('Chat__body--background');
+
+          alert(document.getElementById("WAC__header-name").value);
+        });
+        var chatwindow = document.getElementsByClassName("WatsonAssistantChatHost")[0];
+          chatwindow.style.display="none";
+
+
+          var throttle = false;
+
+document.querySelector('.WatsonAssistantChatHost').addEventListener('click', function (evt) {
+    var o = this,
+        ot = this.textContent;
+    
+    if (!throttle && evt.detail === 3) {
+      hide();
+        this.textContent = 'Triple-clicked!';
+        throttle = true;
+        setTimeout(function () {
+            o.textContent = ot;    
+            throttle = false;
+        }, 1000);
+    }
+});
+         
+
+      });
+    </script>
+</body>
+</html>
