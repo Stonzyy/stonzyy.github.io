@@ -33,6 +33,8 @@
 
 <p >
   <button class="w3-btn w3-ripple w3-black"  style="margin-left:20%;  width: 50%;"  onclick="message();" name="UP">up</button>
+	
+	
 
 </p>
 
@@ -66,5 +68,18 @@ function message() {
 
  </script>
 
+	<script>
+  window.watsonAssistantChatOptions = {
+      integrationID: "501b1827-4d23-406a-af03-980bfddb5577", // The ID of this integration.
+      region: "eu-gb", // The region your integration is hosted in.
+      serviceInstanceID: "60a2e4cc-0a95-4016-864b-eb9318eae9dd", // The ID of your service instance.
+      onLoad: function(instance) { instance.render(); }
+    };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+    document.head.appendChild(t);
+  });
+</script>
 </body>
 </html>
